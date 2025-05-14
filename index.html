@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="javascript.js" defer></script>
+  <script src="https://kit.fontawesome.com/378329ed88.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="grid-container">
+
+    <div class="sidebar-container">
+      <h1>LibLib!</h1>
+      <button class="btn add-book">Add a book</button>
+      <p>What book would you like to add?</p>
+
+    </div>
+    <div class="content-container">
+      <div class="card">
+        <button class="delete-card-btn"><i class="fa-solid fa-x"></i></button>
+        <h2>The Maze Runner</h2>
+        <p>Author</p>
+        <p>Pages</p>
+        <button class="btn unfinished" status-btn">Finished</button>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="addbook" closedby="closerequest">
+    <form method="dialog" class="book-add-form">
+      <div class="input-field">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="Title" required>
+      </div>
+      <div class="input-field">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" placeholder="Author" required>
+      </div>
+      <div class="input-field">
+        <label for="pages">Number of Pages</label>
+        <input type="tel" id="pages" name="pages" required>
+      </div>
+      <div class="input-field">
+        <label for="read">Finished?</label>
+        <input type="checkbox" name="finished" id="finished">
+      </div>
+      <div class="submit-options">
+        <button formmethod="dialog" class="cancel-btn">Cancel</button>
+        <button class="submit-btn" type="submit">Add Book</button>
+      </div>
+
+    </form>
+  </dialog>
+</body>
+
+</html>
