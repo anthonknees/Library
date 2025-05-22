@@ -1,30 +1,33 @@
+
+
+class Book {
+  constructor(title, author, pages, read, id) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = id;
+  }
+}
+
 let myLibrary = [
   new Book("The Maze Runner", "James Dashner", "372", true, '602'),
-  new Book("The Socrch Trias", "James Dashner", "361", true, '420'),
+  new Book("The Socrch Trials", "James Dashner", "361", true, '420'),
 ];
 
-function Book(title, author, pages, read, id) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id;
-}
-
 function addBookToLibrary(title, author, pages, read) {
-  const bookEntry = new Book(title, author, pages, read, crypto.randomUUID());
-  myLibrary.push(bookEntry);
+  myLibrary.push(new Book(title, author, pages, read, crypto.randomUUID()));
 }
 
-addBookToLibrary("TestBook","TestAuthor", 20, true, '201512');
+addBookToLibrary("TestBook", "TestAuthor", 20, true, '201512');
 
-function deleteChildElements(parent){
-  while (parent.firstChild){
+function deleteChildElements(parent) {
+  while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
 }
 
-Book.prototype.toggleReadStatus = function() {
+Book.prototype.toggleReadStatus = function () {
   this.read = !this.read;
 }
 
@@ -37,7 +40,7 @@ function refreshBooks() {
   myLibrary.map(book => {
     const card = document.createElement("div")
     card.classList.add("card");
-  
+
     const title = document.createElement("h2");
     const author = document.createElement("p");
     const pages = document.createElement("p");
@@ -62,7 +65,7 @@ function refreshBooks() {
       refreshBooks();
     })
 
-    if (book.read == true){
+    if (book.read == true) {
       read.textContent = "Finished";
       read.classList.add("finished");
     }
@@ -70,25 +73,25 @@ function refreshBooks() {
       read.textContent = "Unfinished";
       read.classList.add("unfinished");
     }
-  
+
     read.addEventListener("click", () => {
-        book.toggleReadStatus();
-        read.textContent = book.read ? "Finished" : "Unfinished"; 
-        if (book.read){
-          read.classList.remove("unfinished");
-          read.classList.add("finished");
-        }
-        else {
- 
-          read.classList.remove("finished");
-          read.classList.add("unfinished");
-        }
+      book.toggleReadStatus();
+      read.textContent = book.read ? "Finished" : "Unfinished";
+      if (book.read) {
+        read.classList.remove("unfinished");
+        read.classList.add("finished");
+      }
+      else {
+
+        read.classList.remove("finished");
+        read.classList.add("unfinished");
+      }
     })
 
-    card.append(deleteButton ,title, author, pages, read);
+    card.append(deleteButton, title, author, pages, read);
     contentContainer.append(card);
   })
-  
+
 }
 
 const addBookButton = document.querySelector(".add-book");
